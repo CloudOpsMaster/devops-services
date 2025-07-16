@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -21,20 +21,34 @@ jobs:
       - name: Clean npm cache
         run: npm cache clean --force
 
-      - name: Install dependencies (with fix)
+      - name: Install dependencies with fallback fix
         run: |
-          # Якщо є package-lock.json - спробуємо npm ci, інакше npm install
-          if [ -f package-lock.json ]; then
-            npm ci || npm install
+          # Спроба встановити через npm ci (використовує lock-файл)
+          if npm ci; then
+            echo "Dependencies installed via npm ci"
           else
+            echo "npm ci failed — falling back to npm install"
             npm install
           fi
 
-      - name: Fix audit issues (force)
-        run: npm audit fix --force || echo "audit fix failed but continuing"
+      - name: Run audit fix to fix vulnerabilities and update lockfile
+        run: |
+          npm audit fix --force || echo "audit fix failed, continuing"
 
-      - name: Reinstall dependencies after fix
+      - name: Reinstall dependencies after audit fix
         run: npm install
+
+      - name: Commit updated package-lock.json if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          if git diff --quiet package-lock.json; then
+            echo "No changes in package-lock.json"
+          else
+            git add package-lock.json
+            git commit -m "CI: auto update package-lock.json"
+            git push origin main
+          fi
 
       - name: Build React app
         run: npm run build
