@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Or master, depending on your default branch name
 
 jobs:
   build-and-deploy:
@@ -18,15 +18,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
+          cache: 'npm' # Keep this for faster builds if you have package-lock.json
 
       - name: Install dependencies 🔧
-        run: npm install
+        # Use 'npm ci' for clean, consistent installs in CI environments
+        # It requires a package-lock.json or yarn.lock file.
+        run: npm ci
 
       - name: Build 🏗️
         run: npm run build
 
       - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v4 # Use the latest version
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Directory to publish
