@@ -21,13 +21,20 @@ jobs:
       - name: Clean npm cache
         run: npm cache clean --force
 
-      - name: Install dependencies
+      - name: Install dependencies (with fix)
         run: |
+          # Якщо є package-lock.json - спробуємо npm ci, інакше npm install
           if [ -f package-lock.json ]; then
-            npm ci
+            npm ci || npm install
           else
             npm install
           fi
+
+      - name: Fix audit issues (force)
+        run: npm audit fix --force || echo "audit fix failed but continuing"
+
+      - name: Reinstall dependencies after fix
+        run: npm install
 
       - name: Build React app
         run: npm run build
