@@ -1,0 +1,352 @@
+[
+  {
+    "question": "What is the difference between Docker image and container?",
+    "options": [
+      "Image is a runnable instance; container is a blueprint.",
+      "Image is a blueprint; container is a runnable instance.",
+      "Both are the same.",
+      "Container stores code, image stores data."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "How does Kubernetes manage scaling and self-healing?",
+    "options": [
+      "By manually restarting pods.",
+      "Using ReplicaSets for scaling and Controllers for healing.",
+      "Using only StatefulSets.",
+      "It doesn't manage scaling or healing."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "Explain CI/CD and its stages in Azure DevOps or Jenkins.",
+    "options": [
+      "Continuous Integration, Deployment, Testing.",
+      "Building, Testing, Deploying automatically.",
+      "Manual code review and deploy.",
+      "Only deployment and monitoring."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "What’s the difference between load balancer and reverse proxy?",
+    "options": [
+      "Load balancer distributes traffic; reverse proxy handles requests on behalf of servers.",
+      "They are the same.",
+      "Load balancer caches content; reverse proxy balances load.",
+      "Reverse proxy is a type of database."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you handle secrets in CI/CD pipeline securely?",
+    "options": [
+      "Store them in plain text files.",
+      "Use environment variables or secret managers.",
+      "Hardcode in scripts.",
+      "Send via email."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "Explain blue-green vs. canary deployment strategies.",
+    "options": [
+      "Blue-green deploys to two environments; canary releases to a subset of users.",
+      "Both deploy to all users at once.",
+      "Canary is manual; blue-green is automatic.",
+      "They are different names for same process."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What are runbooks and how are they used in incident response?",
+    "options": [
+      "Scripts to automate backups.",
+      "Documents with step-by-step troubleshooting instructions.",
+      "Lists of developers.",
+      "Monitoring dashboards."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "How would you debug high CPU usage in a Linux-based VM?",
+    "options": [
+      "Restart VM immediately.",
+      "Check running processes with top or htop.",
+      "Ignore it.",
+      "Delete all logs."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "What is Infrastructure as Code (IaC)? How is Terraform different from ARM templates?",
+    "options": [
+      "IaC manages infra via code; Terraform is cloud-agnostic, ARM is Azure-specific.",
+      "Both are manual setups.",
+      "Terraform only for AWS; ARM for Azure.",
+      "IaC is a monitoring tool."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you manage log aggregation in microservices architecture?",
+    "options": [
+      "Each service stores logs separately.",
+      "Use centralized systems like ELK or Prometheus.",
+      "Ignore logs.",
+      "Send logs by email."
+    ],
+    "answerIndex": 1
+  },
+  {
+    "question": "What is a service mesh and when should you use one like Istio or Linkerd?",
+    "options": [
+      "It manages network communication between services with features like security and observability.",
+      "It's a database.",
+      "A type of load balancer.",
+      "A container runtime."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Explain how you would migrate workloads from on-prem to Azure/AWS.",
+    "options": [
+      "Use cloud migration tools and plan downtime carefully.",
+      "Copy files manually.",
+      "Rewrite all code.",
+      "Just change DNS records."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What’s the difference between rolling update and recreate strategy in Kubernetes?",
+    "options": [
+      "Rolling updates replace pods gradually; recreate deletes all and creates new ones.",
+      "Both delete pods immediately.",
+      "Recreate updates one by one.",
+      "Rolling update is manual."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you handle zero-downtime deployments?",
+    "options": [
+      "Use strategies like blue-green or rolling updates.",
+      "Restart all services together.",
+      "Turn off monitoring.",
+      "Deploy at night without backup."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What are common reasons for HTTP 403 or 500 in cloud environments and how do you troubleshoot them?",
+    "options": [
+      "403 - permission issues; 500 - server errors; check logs and permissions.",
+      "Both are network errors.",
+      "403 means success.",
+      "Ignore errors."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you automate testing in your CI/CD pipeline?",
+    "options": [
+      "Add test scripts to pipeline stages.",
+      "Run tests manually.",
+      "No tests needed.",
+      "Test only in production."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Describe how you monitor infrastructure and services.",
+    "options": [
+      "Use tools like Prometheus, Grafana, alerting systems.",
+      "Check logs once a month.",
+      "No monitoring.",
+      "Restart servers regularly."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Have you worked with Azure DevOps Boards and Repos? How do you track delivery progress?",
+    "options": [
+      "Using Boards for tasks and Repos for code, track progress via work items.",
+      "Only email updates.",
+      "Manual spreadsheets.",
+      "No tracking."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What is the use of Application Gateway vs. API Gateway?",
+    "options": [
+      "App Gateway manages web traffic; API Gateway manages API requests and security.",
+      "They are the same.",
+      "Both are databases.",
+      "API Gateway manages DNS."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Explain a challenging incident you solved in production.",
+    "options": [
+      "Describe a real incident with troubleshooting and resolution.",
+      "Ignore incidents.",
+      "Restart everything.",
+      "Blame other teams."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Tell me about yourself and your current project.",
+    "options": [
+      "Brief intro and description of your latest work.",
+      "No answer.",
+      "Talk about unrelated topics.",
+      "Ignore question."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Why do you want to join J.P. Morgan?",
+    "options": [
+      "Interest in growth, technology, and company culture.",
+      "Because of salary only.",
+      "No reason.",
+      "Random choice."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Describe a time you disagreed with a teammate—how did you resolve it?",
+    "options": [
+      "Discussed openly and found a compromise.",
+      "Avoided conversation.",
+      "Argued loudly.",
+      "Ignored issue."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Tell me about a time you had to handle an urgent production issue.",
+    "options": [
+      "Stayed calm, followed runbooks, fixed the issue quickly.",
+      "Panicked and escalated.",
+      "Ignored issue.",
+      "Delayed response."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What motivates you at work?",
+    "options": [
+      "Learning, problem-solving, teamwork.",
+      "Only money.",
+      "No motivation.",
+      "Avoiding work."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you prioritize tasks when multiple issues arise?",
+    "options": [
+      "Assess impact and urgency, then act accordingly.",
+      "Do whatever first.",
+      "Ignore tasks.",
+      "Random selection."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Share an example of taking ownership beyond your responsibilities.",
+    "options": [
+      "Volunteered to fix cross-team issues proactively.",
+      "Only do assigned tasks.",
+      "Blame others.",
+      "Avoid responsibility."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you keep yourself updated with technology trends?",
+    "options": [
+      "Read blogs, attend webinars, practice hands-on.",
+      "Ignore trends.",
+      "Wait for coworkers to teach.",
+      "Use outdated tools."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Tell me about a failure you learned from.",
+    "options": [
+      "Explained a mistake and lessons learned.",
+      "No failures.",
+      "Blame others.",
+      "Ignore question."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Have you ever delivered a project under a strict deadline?",
+    "options": [
+      "Yes, planned well and delivered on time.",
+      "No deadlines.",
+      "Missed deadlines.",
+      "Ignored deadlines."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you handle working with cross-functional or remote teams?",
+    "options": [
+      "Clear communication and regular sync-ups.",
+      "Avoid collaboration.",
+      "Work solo only.",
+      "Ignore remote teammates."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "What are your long-term goals in tech?",
+    "options": [
+      "Grow skills and contribute to impactful projects.",
+      "No goals.",
+      "Change careers.",
+      "Avoid tech."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "How do you handle stress or burnout?",
+    "options": [
+      "Take breaks, exercise, and manage workload.",
+      "Ignore stress.",
+      "Work nonstop.",
+      "Quit job."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Tell me about a time when you improved an existing process.",
+    "options": [
+      "Automated manual tasks to save time.",
+      "No improvements.",
+      "Made things worse.",
+      "Ignored process."
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Describe your ideal work environment.",
+    "options": [
+      "Collaborative, supportive, and innovative.",
+      "No collaboration.",
+      "Stressful and chaotic.",
+      "Isolated."
+    ],
+    "answerIndex": 0
+  }
+]
