@@ -1,0 +1,138 @@
+/* Google Fonts - Inter for Apple-like typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --apple-white: #FFFFFF;
+  --apple-light-gray: #F5F5F7;
+  --apple-medium-gray: #86868B;
+  --apple-dark-gray: #1D1D1F;
+  --apple-blue: #007AFF; /* Apple's signature blue */
+  --apple-shadow: rgba(0, 0, 0, 0.08);
+  --apple-transition: all 0.3s ease-out;
+  --apple-border-radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--apple-light-gray);
+  color: var(--apple-dark-gray);
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--apple-white);
+  border-bottom: 1px solid var(--apple-light-gray);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px var(--apple-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand .logo-text {
+  font-weight: 700;
+  font-size: 1.6em;
+  color: var(--apple-dark-gray);
+  letter-spacing: -0.02em; /* Apple-like letter spacing */
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--apple-medium-gray);
+  font-weight: 500;
+  font-size: 1.05em;
+  transition: var(--apple-transition);
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+  color: var(--apple-blue);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--apple-blue);
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+/* Footer */
+.footer {
+  background-color: var(--apple-dark-gray);
+  color: var(--apple-light-gray);
+  text-align: center;
+  padding: 30px;
+  margin-top: 60px;
+  font-size: 0.9em;
+  letter-spacing: 0.01em;
+}
+
+/* General Layouts */
+.page-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 25px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+  .nav-links {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links li {
+    margin: 0 15px 10px;
+  }
+  .page-container {
+    padding: 0 15px;
+  }
+}
