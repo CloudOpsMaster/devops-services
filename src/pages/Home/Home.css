@@ -1,0 +1,210 @@
+.home-page {
+  /* No specific styles needed directly on .home-page if .page-container is used */
+}
+
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(145deg, var(--apple-white), var(--apple-light-gray) 80%);
+  border-radius: var(--apple-border-radius);
+  box-shadow: 0 5px 15px var(--apple-shadow);
+  margin-bottom: 60px;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-section h1 {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--apple-dark-gray);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-section p {
+  font-size: 1.4em;
+  color: var(--apple-medium-gray);
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.4;
+}
+
+.hero-button {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+  padding: 16px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: 600;
+  transition: var(--apple-transition);
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+  letter-spacing: 0.01em;
+}
+
+.hero-button:hover {
+  background-color: #006EDC; /* Slightly darker blue */
+  box-shadow: 0 6px 18px rgba(0, 122, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.services-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 2.8em;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: var(--apple-dark-gray);
+  letter-spacing: -0.02em;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.service-card {
+  background-color: var(--apple-white);
+  border-radius: var(--apple-border-radius);
+  padding: 35px;
+  box-shadow: 0 3px 10px var(--apple-shadow);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideInUp 0.8s ease-out forwards; /* Apply animation */
+  opacity: 0; /* Start hidden for animation */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  font-size: 4em;
+  color: var(--apple-blue);
+  margin-bottom: 20px;
+  animation: scaleIn 0.6s ease-out forwards; /* Icon animation */
+}
+
+.service-card h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--apple-dark-gray);
+  margin-bottom: 15px;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  font-size: 1.05em;
+  color: var(--apple-medium-gray);
+  flex-grow: 1; /* Make description take available space */
+}
+
+.cta-section {
+  text-align: center;
+  padding: 70px 20px;
+  background: linear-gradient(145deg, var(--apple-white), var(--apple-light-gray) 80%);
+  border-radius: var(--apple-border-radius);
+  box-shadow: 0 5px 15px var(--apple-shadow);
+  margin-top: 60px;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.cta-section h2 {
+  font-size: 2.8em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--apple-dark-gray);
+  letter-spacing: -0.02em;
+}
+
+.cta-section p {
+  font-size: 1.3em;
+  color: var(--apple-medium-gray);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+  padding: 16px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: 600;
+  transition: var(--apple-transition);
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+  letter-spacing: 0.01em;
+}
+
+.cta-button:hover {
+  background-color: #006EDC;
+  box-shadow: 0 6px 18px rgba(0, 122, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments for Home Page */
+@media (max-width: 992px) {
+  .hero-section h1 {
+    font-size: 2.8em;
+  }
+  .hero-section p {
+    font-size: 1.2em;
+  }
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .service-icon {
+    font-size: 3.5em;
+  }
+  .service-card h3 {
+    font-size: 1.3em;
+  }
+  .cta-section h2 {
+    font-size: 2.2em;
+  }
+  .cta-section p {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 2.2em;
+  }
+  .hero-section p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  .hero-button, .cta-button {
+    font-size: 1.1em;
+    padding: 12px 25px;
+  }
+  .services-section h2, .cta-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-card {
+    padding: 25px;
+  }
+  .service-icon {
+    font-size: 3em;
+  }
+}
