@@ -2,7 +2,7 @@
   "name": "devops-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://CloudOpsMaster.github.io/devops-portfolio",
+  "homepage": "https://CloudOpsMaster.github.io/devops-services",
   "dependencies": {
     "gh-pages": "^5.0.0",
     "i18next": "^23.16.8",
