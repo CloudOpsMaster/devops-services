@@ -14,7 +14,7 @@ export default function Header() {
       <nav className="nav-menu">
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
         <Link to="/portfolio" className={location.pathname === "/portfolio" ? "active" : ""}>Portfolio</Link>
-        <Link to="/quest" className={location.pathname === "/quest" ? "active" : ""}>Portfolio</Link>
+        <Link to="/quest" className={location.pathname === "/quest" ? "active" : ""}>Quest</Link>
       </nav>
     </header>
   );
