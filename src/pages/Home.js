@@ -3,13 +3,16 @@ import './Home.css';
 import logo from '../assets/logo.png';
 
 const technologies = [
-  "AWS", "Kubernetes", "Docker", "Helm", "Ansible", "Jenkins",
-  "GitHub Actions", "GitLab CI/CD", "Prometheus + Grafana"
+  "AWS", "EKS", "Terraform", "Helm", "Ansible", "Jenkins",
+  "GitLab CI/CD", "GitHub Actions", "Prometheus", "Grafana",
+  "Linux", "Bash", "Python", "Nginx", "SonarQube"
 ];
 
 export default function Home() {
   return (
     <div className="home-container">
+      <img src={logo} alt="Logo" className="logo" />
+
       <div className="tech-slider">
         <div className="tech-slide-track">
           {technologies.concat(technologies).map((tech, index) => (
@@ -18,20 +21,44 @@ export default function Home() {
         </div>
       </div>
 
-      <h1>DevOps Services</h1>
-      <p>I provide end-to-end infrastructure and automation services using modern DevOps technologies:</p>
+      <h1>DevOps Services by Vadym Pyrozhenko</h1>
+      <p>
+        I help teams build scalable, secure, and automated infrastructure.
+        With 4+ years of hands-on DevOps experience, I specialize in AWS, Kubernetes, and CI/CD automation.
+      </p>
 
       <div className="services-grid">
-        <div className="service-card"><h3>AWS</h3><p>Infrastructure as Code, EC2, S3, VPC, RDS, scaling.</p></div>
-        <div className="service-card"><h3>Kubernetes</h3><p>Cluster setup (EKS), deployment, Helm, autoscaling.</p></div>
-        <div className="service-card"><h3>Docker</h3><p>Containerization, Dockerfile optimization, multi-stage builds.</p></div>
-        <div className="service-card"><h3>Helm</h3><p>Reusable charts for microservices deployment.</p></div>
-        <div className="service-card"><h3>Ansible</h3><p>Provisioning, configuration, and app deployment automation.</p></div>
-        <div className="service-card"><h3>Jenkins</h3><p>CI/CD pipelines, Git integration, quality gates.</p></div>
-        <div className="service-card"><h3>GitHub Actions</h3><p>Automated workflows, builds, and testing on push.</p></div>
-        <div className="service-card"><h3>GitLab CI/CD</h3><p>Full CI/CD with environments and GitOps practices.</p></div>
-        <div className="service-card"><h3>Prometheus + Grafana</h3><p>Monitoring, alerting, and beautiful dashboards.</p></div>
+        <div className="service-card">
+          <h3>AWS Infrastructure</h3>
+          <p>Design and implementation of scalable, secure cloud solutions using EC2, S3, VPC, EKS, and IAM.</p>
+        </div>
+        <div className="service-card">
+          <h3>Kubernetes & Helm</h3>
+          <p>Cluster setup (EKS/OKD), CI/CD deployment with Helm, autoscaling, monitoring, and legacy migration.</p>
+        </div>
+        <div className="service-card">
+          <h3>CI/CD Automation</h3>
+          <p>Automated pipelines with Jenkins, GitLab CI/CD, and GitHub Actions — build, test, deploy.</p>
+        </div>
+        <div className="service-card">
+          <h3>Infrastructure as Code</h3>
+          <p>Provisioning with Terraform and Ansible, including reusable modules and multi-environment support.</p>
+        </div>
+        <div className="service-card">
+          <h3>Monitoring & SRE</h3>
+          <p>Monitoring with Prometheus + Grafana, alerting systems, SRE principles for high availability.</p>
+        </div>
+        <div className="service-card">
+          <h3>Linux & Scripting</h3>
+          <p>Shell/Bash/Python scripting, log analysis, system optimization, server automation and hardening.</p>
+        </div>
+        <div className="service-card">
+          <h3>Legacy System Modernization</h3>
+          <p>Migration from on-prem to AWS, containerization of monoliths, CI/CD enablement for legacy apps.</p>
+        </div>
       </div>
+
+      <p>If you're looking for a DevOps engineer to build, optimize, or automate your infrastructure — I'm here to help.</p>
 
       <a
         href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
@@ -40,7 +67,6 @@ export default function Home() {
       >
         <button className="cta-button">📩 Request a Free Consultation</button>
       </a>
-
     </div>
   );
 }
