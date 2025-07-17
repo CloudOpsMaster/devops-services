@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </div>
 
-      <h1>DevOps Services by Vadym Pyrozhenko</h1>
+      <h1>DevOps Services</h1>
       <p>
         I help teams build scalable, secure, and automated infrastructure.
         With 4+ years of hands-on DevOps experience, I specialize in AWS, Kubernetes, and CI/CD automation.
