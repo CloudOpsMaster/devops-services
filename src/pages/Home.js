@@ -11,7 +11,6 @@ const technologies = [
 export default function Home() {
   return (
     <div className="home-container">
-      <img src={logo} alt="Logo" className="logo" />
 
       <div className="tech-slider">
         <div className="tech-slide-track">
