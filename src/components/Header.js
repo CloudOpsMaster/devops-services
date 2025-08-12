@@ -14,13 +14,13 @@ export default function Header() {
 
       <div className="header-center">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
-            target="_blank"
-            rel="noreferrer"
-            className="header-cta-button"
-          >
-            📩 Request Consultation
-          </a>
+              href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
+              target="_blank"
+              rel="noreferrer"
+              className="header-link"
+            >
+              📩 Request Consultation
+           </a>
       </div>
       <nav className="nav-menu">
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
