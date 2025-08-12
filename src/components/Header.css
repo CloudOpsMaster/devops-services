@@ -87,3 +87,21 @@
     opacity: 0.85;
   }
 }
+
+.header-link {
+  color: #0A84FF;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.header-link:hover {
+  color: #005BBB;
+  text-decoration: underline;
+}
