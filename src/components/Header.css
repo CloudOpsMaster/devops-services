@@ -9,21 +9,24 @@
   top: 0;
   z-index: 100;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo-section {
   display: flex;
   align-items: center;
+  flex: none;
 }
 
-.animated-logo {
+.logo-svg {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0A84FF, #5E5CE6, #AF52DE);
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite, rotate 5s linear infinite, pulse 2s ease-in-out infinite;
   margin-right: 10px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%230A84FF' viewBox='0 0 64 64'><path d='M32 2C17 2 4 15 4 30c0 11 8 20 18 22v-7a12 12 0 0 1 20 0v7c10-2 18-11 18-22 0-15-13-28-28-28z'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .site-name {
@@ -37,12 +40,40 @@
   animation: textShift 6s ease-in-out infinite;
 }
 
+.header-center {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.header-cta-button {
+  padding: 0.5rem 1.2rem;
+  background-color: #0a84ff;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-cta-button:hover {
+  background-color: #0066cc;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
 .nav-menu a {
   margin-left: 1.2rem;
   color: #1c1c1e;
   font-weight: 500;
   transition: color 0.3s;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover,
@@ -50,28 +81,42 @@
   color: #0A84FF;
 }
 
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(10, 132, 255, 0);
-  }
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @keyframes textShift {
   0% { background-position: 0% center; }
   50% { background-position: 100% center; }
   100% { background-position: 0% center; }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .logo-section,
+  .header-center,
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    order: 3;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-center {
+    order: 2;
+  }
+
+  .logo-section {
+    order: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-menu a {
+    margin-left: 0;
+  }
 }
