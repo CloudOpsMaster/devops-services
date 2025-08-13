@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
-import { FaAws, FaDocker, FaPython, FaLinux, FaGitAlt, FaHelm } from "react-icons/fa";
-import { SiTerraform, SiKubernetes, SiAnsible, SiPrometheus, SiGrafana, SiJenkins } from "react-icons/si";
 
 const translations = {
   en: {
@@ -80,7 +78,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // Паралакс іконок
   useEffect(() => {
     const handleScroll = () => {
       iconRefs.current.forEach((icon, i) => {
@@ -104,18 +101,18 @@ export default function Home() {
   };
 
   const heroIcons = [
-    <FaAws title="AWS" />,
-    <SiKubernetes title="Kubernetes" />,
-    <SiTerraform title="Terraform" />,
-    <SiAnsible title="Ansible" />,
-    <SiJenkins title="Jenkins" />,
-    <FaGitAlt title="GitLab/GitHub CI" />,
-    <SiPrometheus title="Prometheus" />,
-    <SiGrafana title="Grafana" />,
-    <FaLinux title="Linux" />,
-    <FaPython title="Python/Bash" />,
-    <FaDocker title="Docker" />,
-    <FaHelm title="Helm" />,
+    { class: "fa-brands fa-aws", title: "AWS" },
+    { class: "si si-kubernetes", title: "Kubernetes" },
+    { class: "si si-terraform", title: "Terraform" },
+    { class: "si si-ansible", title: "Ansible" },
+    { class: "si si-jenkins", title: "Jenkins" },
+    { class: "fa-brands fa-git-alt", title: "GitLab/GitHub CI" },
+    { class: "si si-prometheus", title: "Prometheus" },
+    { class: "si si-grafana", title: "Grafana" },
+    { class: "fa-brands fa-linux", title: "Linux" },
+    { class: "fa-brands fa-python", title: "Python/Bash" },
+    { class: "fa-brands fa-docker", title: "Docker" },
+    { class: "si si-helm", title: "Helm" },
   ];
 
   return (
@@ -137,8 +134,13 @@ export default function Home() {
         <p>{t.heroSubtitle}</p>
         <div className="hero-icons">
           {heroIcons.map((icon, i) => (
-            <div key={i} ref={(el) => setIconRefs(el, i)} className="icon-wrapper">
-              {icon}
+            <div
+              key={i}
+              ref={(el) => setIconRefs(el, i)}
+              className="icon-wrapper"
+              title={icon.title}
+            >
+              <i className={icon.class}></i>
             </div>
           ))}
         </div>
