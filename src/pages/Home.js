@@ -58,6 +58,7 @@ export default function Home() {
   const [lang, setLang] = useState("en");
   const t = translations[lang];
   const sectionsRef = useRef([]);
+  const iconRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,17 +72,29 @@ export default function Home() {
       },
       { threshold: 0.1 }
     );
-
     sectionsRef.current.forEach((section) => {
       if (section) observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
 
-  const setRefs = (el, index) => {
-    sectionsRef.current[index] = el;
-  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      iconRefs.current.forEach((icon, i) => {
+        if (icon) {
+          const speed = (i % 4 + 1) * 0.2; // різна швидкість
+          const offset = window.scrollY * speed;
+          icon.style.transform = `rotate(${i*30}deg) translateY(-150px) translateY(${offset}px)`;
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const setRefs = (el, index) => { sectionsRef.current[index] = el; };
+  const setIconRefs = (el, index) => { iconRefs.current[index] = el; };
 
   const heroIcons = [
     <FaAws title="AWS" />,
@@ -102,11 +115,7 @@ export default function Home() {
     <main className="home-container" lang={lang}>
       <div className="language-switcher">
         {["en", "uk", "ru"].map((code) => (
-          <button
-            key={code}
-            className={lang === code ? "active" : ""}
-            onClick={() => setLang(code)}
-          >
+          <button key={code} className={lang === code ? "active" : ""} onClick={() => setLang(code)}>
             {code.toUpperCase()}
           </button>
         ))}
@@ -117,9 +126,10 @@ export default function Home() {
           <h1>{t.heroTitle}</h1>
           <p>{t.heroSubtitle}</p>
         </div>
-        <div className="hero-icons">
+
+        <div className="hero-orbit">
           {heroIcons.map((icon, i) => (
-            <div key={i} className="icon-wrapper">
+            <div key={i} className={`orbit-icon orbit-icon-${i+1}`} ref={(el) => setIconRefs(el, i)}>
               {icon}
             </div>
           ))}
@@ -144,12 +154,10 @@ export default function Home() {
 
       <section ref={(el) => setRefs(el, 3)} className="fade-section cta">
         <p>{t.ctaText}</p>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
           target="_blank"
           rel="noreferrer"
-          className="cta-button"
-        >
+          className="cta-button">
           {t.ctaButton}
         </a>
       </section>
