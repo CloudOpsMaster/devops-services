@@ -112,5 +112,5 @@ section p {
 .services-grid {
   display: grid;
   gap: 1.2rem;
-  grid-template-columns: repeat(auto-fit, minm
+  grid-template-columns: repeat(auto-fit, minm)
 }
