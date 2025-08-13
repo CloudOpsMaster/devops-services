@@ -113,3 +113,4 @@ section p {
   display: grid;
   gap: 1.2rem;
   grid-template-columns: repeat(auto-fit, minm
+}
