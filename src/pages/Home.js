@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
-import { FaAws, FaDocker, FaPython, FaLinux, FaGitAlt, FaHelm } from "react-icons/fa";
-import { SiTerraform, SiKubernetes, SiAnsible, SiPrometheus, SiGrafana, SiJenkins } from "react-icons/si";
 
 const translations = {
   en: {
@@ -60,6 +58,7 @@ export default function Home() {
   const sectionsRef = useRef([]);
   const iconRefs = useRef([]);
 
+  // Fade-in effect
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -72,20 +71,22 @@ export default function Home() {
       },
       { threshold: 0.1 }
     );
+
     sectionsRef.current.forEach((section) => {
       if (section) observer.observe(section);
     });
+
     return () => observer.disconnect();
   }, []);
 
-
+  // Floating/parallax icons
   useEffect(() => {
     const handleScroll = () => {
       iconRefs.current.forEach((icon, i) => {
         if (icon) {
-          const speed = (i % 4 + 1) * 0.2; // різна швидкість
+          const speed = (i % 3 + 1) * 0.2;
           const offset = window.scrollY * speed;
-          icon.style.transform = `rotate(${i*30}deg) translateY(-150px) translateY(${offset}px)`;
+          icon.style.transform = `translateY(${offset}px)`;
         }
       });
     };
@@ -93,44 +94,50 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const setRefs = (el, index) => { sectionsRef.current[index] = el; };
-  const setIconRefs = (el, index) => { iconRefs.current[index] = el; };
+  const setRefs = (el, index) => {
+    sectionsRef.current[index] = el;
+  };
+  const setIconRefs = (el, index) => {
+    iconRefs.current[index] = el;
+  };
 
+  // Use public SVG icons
   const heroIcons = [
-    <FaAws title="AWS" />,
-    <SiKubernetes title="Kubernetes" />,
-    <SiTerraform title="Terraform" />,
-    <SiAnsible title="Ansible" />,
-    <SiJenkins title="Jenkins" />,
-    <FaGitAlt title="GitLab/GitHub CI" />,
-    <SiPrometheus title="Prometheus" />,
-    <SiGrafana title="Grafana" />,
-    <FaLinux title="Linux" />,
-    <FaPython title="Python/Bash" />,
-    <FaDocker title="Docker" />,
-    <FaHelm title="Helm" />,
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg",
   ];
 
   return (
     <main className="home-container" lang={lang}>
       <div className="language-switcher">
         {["en", "uk", "ru"].map((code) => (
-          <button key={code} className={lang === code ? "active" : ""} onClick={() => setLang(code)}>
+          <button
+            key={code}
+            className={lang === code ? "active" : ""}
+            onClick={() => setLang(code)}
+          >
             {code.toUpperCase()}
           </button>
         ))}
       </div>
 
       <section ref={(el) => setRefs(el, 0)} className="fade-section hero">
-        <div className="hero-content">
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroSubtitle}</p>
-        </div>
-
-        <div className="hero-orbit">
-          {heroIcons.map((icon, i) => (
-            <div key={i} className={`orbit-icon orbit-icon-${i+1}`} ref={(el) => setIconRefs(el, i)}>
-              {icon}
+        <h1>{t.heroTitle}</h1>
+        <p>{t.heroSubtitle}</p>
+        <div className="hero-icons">
+          {heroIcons.map((src, i) => (
+            <div key={i} ref={(el) => setIconRefs(el, i)} className="icon-wrapper">
+              <img src={src} alt="" />
             </div>
           ))}
         </div>
@@ -154,10 +161,12 @@ export default function Home() {
 
       <section ref={(el) => setRefs(el, 3)} className="fade-section cta">
         <p>{t.ctaText}</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
           target="_blank"
           rel="noreferrer"
-          className="cta-button">
+          className="cta-button"
+        >
           {t.ctaButton}
         </a>
       </section>
