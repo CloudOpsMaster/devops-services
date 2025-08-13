@@ -14,7 +14,6 @@ const translations = {
       { title: "Monitoring & Reliability", desc: "Prometheus, Grafana, and SRE best practices." },
       { title: "Linux & Scripting", desc: "Performance tuning, Bash/Python automation, and security hardening." },
     ],
-    experience: "Professional DevOps Experience",
     ctaText: "Need a reliable DevOps engineer for your project?",
     ctaButton: "📩 Request a Free Consultation",
   },
