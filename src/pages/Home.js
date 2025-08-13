@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
+import { FaAws, FaDocker, FaPython, FaLinux, FaGitAlt, FaHelm } from "react-icons/fa";
+import { SiTerraform, SiKubernetes, SiAnsible, SiPrometheus, SiGrafana, SiJenkins } from "react-icons/si";
 
 const translations = {
   en: {
-    heroTitle: "Building Scalable, Secure, and Automated Infrastructure",
-    heroSubtitle:
-      "DevOps engineer with professional experience helping businesses optimize, automate, and scale their cloud environments.",
+    heroTitle: "Scaling, Securing & Automating Cloud Infrastructure",
+    heroSubtitle: "DevOps Engineer with expertise in building reliable and efficient cloud solutions.",
     servicesTitle: "Core Expertise",
     services: [
       { title: "AWS Cloud Solutions", desc: "Design and manage scalable, secure AWS infrastructure." },
@@ -21,8 +22,7 @@ const translations = {
   },
   uk: {
     heroTitle: "Масштабована, безпечна та автоматизована інфраструктура",
-    heroSubtitle:
-      "DevOps-інженер з професійним досвідом допомоги бізнесам у оптимізації, автоматизації та масштабуванні хмарного середовища.",
+    heroSubtitle: "DevOps-інженер з професійним досвідом у надійних та ефективних хмарних рішеннях.",
     servicesTitle: "Ключова експертиза",
     services: [
       { title: "AWS Рішення", desc: "Проєктування та управління масштабованою, безпечною AWS інфраструктурою." },
@@ -38,8 +38,7 @@ const translations = {
   },
   ru: {
     heroTitle: "Масштабируемая, безопасная и автоматизированная инфраструктура",
-    heroSubtitle:
-      "DevOps-инженер с профессиональным опытом помощи бизнесу в оптимизации, автоматизации и масштабировании облачных сред.",
+    heroSubtitle: "DevOps-инженер с опытом создания надежных и эффективных облачных решений.",
     servicesTitle: "Ключевая экспертиза",
     services: [
       { title: "AWS Решения", desc: "Проектирование и управление масштабируемой, безопасной AWS инфраструктурой." },
@@ -59,6 +58,7 @@ export default function Home() {
   const [lang, setLang] = useState("en");
   const t = translations[lang];
   const sectionsRef = useRef([]);
+  const iconRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -80,13 +80,47 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Паралакс іконок
+  useEffect(() => {
+    const handleScroll = () => {
+      iconRefs.current.forEach((icon, i) => {
+        if (icon) {
+          const speed = (i % 3 + 1) * 0.3;
+          const offset = window.scrollY * speed;
+          icon.style.transform = `translateY(${offset}px)`;
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const setRefs = (el, index) => {
     sectionsRef.current[index] = el;
   };
 
+  const setIconRefs = (el, index) => {
+    iconRefs.current[index] = el;
+  };
+
+  const heroIcons = [
+    <FaAws title="AWS" />,
+    <SiKubernetes title="Kubernetes" />,
+    <SiTerraform title="Terraform" />,
+    <SiAnsible title="Ansible" />,
+    <SiJenkins title="Jenkins" />,
+    <FaGitAlt title="GitLab/GitHub CI" />,
+    <SiPrometheus title="Prometheus" />,
+    <SiGrafana title="Grafana" />,
+    <FaLinux title="Linux" />,
+    <FaPython title="Python/Bash" />,
+    <FaDocker title="Docker" />,
+    <FaHelm title="Helm" />,
+  ];
+
   return (
     <main className="home-container" lang={lang}>
-      <div className="language-switcher-fixed">
+      <div className="language-switcher">
         {["en", "uk", "ru"].map((code) => (
           <button
             key={code}
@@ -98,9 +132,16 @@ export default function Home() {
         ))}
       </div>
 
-      <section ref={(el) => setRefs(el, 0)} className="fade-section">
+      <section ref={(el) => setRefs(el, 0)} className="fade-section hero">
         <h1>{t.heroTitle}</h1>
         <p>{t.heroSubtitle}</p>
+        <div className="hero-icons">
+          {heroIcons.map((icon, i) => (
+            <div key={i} ref={(el) => setIconRefs(el, i)} className="icon-wrapper">
+              {icon}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section ref={(el) => setRefs(el, 1)} className="fade-section services">
