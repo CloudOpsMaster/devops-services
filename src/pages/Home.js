@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
+import { FaAws, FaDocker, FaPython, FaLinux, FaGitAlt, FaHelm } from "react-icons/fa";
+import { SiTerraform, SiKubernetes, SiAnsible, SiPrometheus, SiGrafana, SiJenkins } from "react-icons/si";
 
 const translations = {
   en: {
@@ -70,21 +72,20 @@ export default function Home() {
       },
       { threshold: 0.1 }
     );
-
     sectionsRef.current.forEach((section) => {
       if (section) observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
       iconRefs.current.forEach((icon, i) => {
         if (icon) {
-          const speed = (i % 3 + 1) * 0.3;
+          const speed = (i % 4 + 1) * 0.2; // різна швидкість
           const offset = window.scrollY * speed;
-          icon.style.transform = `translateY(${offset}px)`;
+          icon.style.transform = `rotate(${i*30}deg) translateY(-150px) translateY(${offset}px)`;
         }
       });
     };
@@ -92,55 +93,44 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const setRefs = (el, index) => {
-    sectionsRef.current[index] = el;
-  };
-
-  const setIconRefs = (el, index) => {
-    iconRefs.current[index] = el;
-  };
+  const setRefs = (el, index) => { sectionsRef.current[index] = el; };
+  const setIconRefs = (el, index) => { iconRefs.current[index] = el; };
 
   const heroIcons = [
-    { class: "fa-brands fa-aws", title: "AWS" },
-    { class: "si si-kubernetes", title: "Kubernetes" },
-    { class: "si si-terraform", title: "Terraform" },
-    { class: "si si-ansible", title: "Ansible" },
-    { class: "si si-jenkins", title: "Jenkins" },
-    { class: "fa-brands fa-git-alt", title: "GitLab/GitHub CI" },
-    { class: "si si-prometheus", title: "Prometheus" },
-    { class: "si si-grafana", title: "Grafana" },
-    { class: "fa-brands fa-linux", title: "Linux" },
-    { class: "fa-brands fa-python", title: "Python/Bash" },
-    { class: "fa-brands fa-docker", title: "Docker" },
-    { class: "si si-helm", title: "Helm" },
+    <FaAws title="AWS" />,
+    <SiKubernetes title="Kubernetes" />,
+    <SiTerraform title="Terraform" />,
+    <SiAnsible title="Ansible" />,
+    <SiJenkins title="Jenkins" />,
+    <FaGitAlt title="GitLab/GitHub CI" />,
+    <SiPrometheus title="Prometheus" />,
+    <SiGrafana title="Grafana" />,
+    <FaLinux title="Linux" />,
+    <FaPython title="Python/Bash" />,
+    <FaDocker title="Docker" />,
+    <FaHelm title="Helm" />,
   ];
 
   return (
     <main className="home-container" lang={lang}>
       <div className="language-switcher">
         {["en", "uk", "ru"].map((code) => (
-          <button
-            key={code}
-            className={lang === code ? "active" : ""}
-            onClick={() => setLang(code)}
-          >
+          <button key={code} className={lang === code ? "active" : ""} onClick={() => setLang(code)}>
             {code.toUpperCase()}
           </button>
         ))}
       </div>
 
       <section ref={(el) => setRefs(el, 0)} className="fade-section hero">
-        <h1>{t.heroTitle}</h1>
-        <p>{t.heroSubtitle}</p>
-        <div className="hero-icons">
+        <div className="hero-content">
+          <h1>{t.heroTitle}</h1>
+          <p>{t.heroSubtitle}</p>
+        </div>
+
+        <div className="hero-orbit">
           {heroIcons.map((icon, i) => (
-            <div
-              key={i}
-              ref={(el) => setIconRefs(el, i)}
-              className="icon-wrapper"
-              title={icon.title}
-            >
-              <i className={icon.class}></i>
+            <div key={i} className={`orbit-icon orbit-icon-${i+1}`} ref={(el) => setIconRefs(el, i)}>
+              {icon}
             </div>
           ))}
         </div>
@@ -164,12 +154,10 @@ export default function Home() {
 
       <section ref={(el) => setRefs(el, 3)} className="fade-section cta">
         <p>{t.ctaText}</p>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScnvM_iWlMPqTBiFwoU0DBkFL1WRy4V2ll6EIRv6S_ICOe00A/viewform?usp=header"
           target="_blank"
           rel="noreferrer"
-          className="cta-button"
-        >
+          className="cta-button">
           {t.ctaButton}
         </a>
       </section>
