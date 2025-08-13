@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
+import { FaAws, FaDocker, FaPython, FaLinux, FaGitAlt, FaHelm } from "react-icons/fa";
+import { SiTerraform, SiKubernetes, SiAnsible, SiPrometheus, SiGrafana, SiJenkins } from "react-icons/si";
 
 const translations = {
   en: {
@@ -56,7 +58,6 @@ export default function Home() {
   const [lang, setLang] = useState("en");
   const t = translations[lang];
   const sectionsRef = useRef([]);
-  const iconRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,41 +79,23 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      iconRefs.current.forEach((icon, i) => {
-        if (icon) {
-          const speed = (i % 3 + 1) * 0.3;
-          const offset = window.scrollY * speed;
-          icon.style.transform = `translateY(${offset}px)`;
-        }
-      });
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const setRefs = (el, index) => {
     sectionsRef.current[index] = el;
   };
 
-  const setIconRefs = (el, index) => {
-    iconRefs.current[index] = el;
-  };
-
   const heroIcons = [
-    { class: "fa-brands fa-aws", title: "AWS" },
-    { class: "si si-kubernetes", title: "Kubernetes" },
-    { class: "si si-terraform", title: "Terraform" },
-    { class: "si si-ansible", title: "Ansible" },
-    { class: "si si-jenkins", title: "Jenkins" },
-    { class: "fa-brands fa-git-alt", title: "GitLab/GitHub CI" },
-    { class: "si si-prometheus", title: "Prometheus" },
-    { class: "si si-grafana", title: "Grafana" },
-    { class: "fa-brands fa-linux", title: "Linux" },
-    { class: "fa-brands fa-python", title: "Python/Bash" },
-    { class: "fa-brands fa-docker", title: "Docker" },
-    { class: "si si-helm", title: "Helm" },
+    <FaAws title="AWS" />,
+    <SiKubernetes title="Kubernetes" />,
+    <SiTerraform title="Terraform" />,
+    <SiAnsible title="Ansible" />,
+    <SiJenkins title="Jenkins" />,
+    <FaGitAlt title="GitLab/GitHub CI" />,
+    <SiPrometheus title="Prometheus" />,
+    <SiGrafana title="Grafana" />,
+    <FaLinux title="Linux" />,
+    <FaPython title="Python/Bash" />,
+    <FaDocker title="Docker" />,
+    <FaHelm title="Helm" />,
   ];
 
   return (
@@ -130,17 +113,14 @@ export default function Home() {
       </div>
 
       <section ref={(el) => setRefs(el, 0)} className="fade-section hero">
-        <h1>{t.heroTitle}</h1>
-        <p>{t.heroSubtitle}</p>
+        <div className="hero-content">
+          <h1>{t.heroTitle}</h1>
+          <p>{t.heroSubtitle}</p>
+        </div>
         <div className="hero-icons">
           {heroIcons.map((icon, i) => (
-            <div
-              key={i}
-              ref={(el) => setIconRefs(el, i)}
-              className="icon-wrapper"
-              title={icon.title}
-            >
-              <i className={icon.class}></i>
+            <div key={i} className="icon-wrapper">
+              {icon}
             </div>
           ))}
         </div>
